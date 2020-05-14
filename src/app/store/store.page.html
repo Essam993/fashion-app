@@ -1,0 +1,188 @@
+<ion-header no-border>
+  <ion-toolbar style="--background: #2e3943">
+
+
+    <ion-row>
+      <ion-col size="2">
+        <ion-header no-border>
+          <ion-toolbar class="new-background-color">
+            <ion-buttons slot="start">
+              <ion-menu-button color="light"></ion-menu-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-col>
+      <ion-col size="8" style="margin-top: 4px;">
+
+        <ion-searchbar style="--background: white" animated class="searchDiv" [(ngModel)]="searchQuery" ionClear="getProducts()"
+          [showCancelButton]="true" (keyup.enter)="search(searchQuery)"></ion-searchbar>
+ 
+      </ion-col>
+      <ion-col size="2">
+        <ion-header no-border style="--background: transparent">
+          <ion-toolbar class="new-background-color">
+            <ion-buttons slot="end" collapse="true"  class="badgeard" routerLink="/cart">
+              <ion-badge color="danger" slot="end">{{badgeValue}}</ion-badge>
+              <ion-icon  name="md-cart"></ion-icon>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content no-border>
+
+  <ion-slides pager="true">
+
+    <ion-slide>
+
+      <ion-card>
+        <img src="assets/images/1.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle style="text-align: center;">Welcome To</ion-card-subtitle>
+          <ion-card-title style="text-align: center;">Groom Store</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+      
+      <ion-card>
+        <img src="assets/images/2.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle style="text-align: center;">New</ion-card-subtitle>
+          <ion-card-title style="text-align: center;">Collection</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-card>
+        <img src="assets/images/3.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle style="text-align: center;">New</ion-card-subtitle>
+          <ion-card-title style="text-align: center;">Collection</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-card style="padding: 10px; --background: #2e3943; background-image: url(assets/logo-only.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;">
+    <ion-card-content style="padding: 10px; color: white">
+      <p style="text-align: center; font-size: 20px; padding: 10px;">Fashion Rocket is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing and accessories.</p>
+    </ion-card-content>
+    </ion-card>
+
+  
+
+  <ion-item style="--background: #2e3943; color: white;">
+    <ion-label style="margin-left: 30%;">Advanced Search</ion-label>
+    <ion-select [(ngModel)]="selectedCategory" interface="action-sheet">
+      <ion-select-option (click) = "search('')" >
+        ALL
+      </ion-select-option>
+      <ion-select-option *ngFor="let category of categories" (click) = "getProductsByCategory(category.id)">
+        {{category.name}}
+      </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-grid class="ion-no-border">
+
+    <h2 style="text-align: center; color: #2e3943;"> New Items</h2>
+
+    <ion-slides>
+
+      <ion-slide *ngFor="let product of products"> 
+
+        <ion-card (click)="openDetailsWithState(product)" style="width: 100%;">
+          <img [src]=product.image_url alt="product" class="p-store-list-img" (load)="loaded = true"
+          [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded" *ngIf="product.image_url" width="100%" height="100%" />
+          <ion-card-header>
+            <ion-card-title style="text-align: center; font-size: 18px;">New Collection</ion-card-title>
+            <ion-text class="p-store-list-name" text-wrap>
+              <h5 class="p-store-list-name" >
+                {{ (product.name.length>38)? (product.name | slice:0:38)+'..':(product.name)}}</h5>
+            </ion-text>
+  
+            <ion-row class="price-div">
+              <ion-col size="6" size-sm>
+                <ion-text class="p-store-list-price">
+                  <p style="margin-top: 10px; color:#19271f">Price</p>
+                  <h6 style="margin-top: 0px; color:#19271f" class="p-store-list-price">{{product.price}} EUR</h6>
+                </ion-text>
+              </ion-col>
+              <ion-col align-self-center class="ion-text-right" style="padding-right: 35px;" size="6" size-sm>
+  
+                <button class="selectbtn" style="background: transparent" [ngClass]="selectbtnGreen" (click)="addToCart(product)">
+                  <ion-icon style=" color:rgb(38, 95, 109);" name="cart"></ion-icon>
+                </button>
+              </ion-col>
+  
+  
+            </ion-row>
+          </ion-card-header>
+        </ion-card>
+  
+      </ion-slide>
+
+    </ion-slides>
+
+
+
+    <h2 style="text-align: center; color: #2e3943;"> Best Offer</h2>
+
+    <ion-slides>
+
+      <ion-slide *ngFor="let product of products"> 
+
+        <ion-card (click)="openDetailsWithState(product)" style="width: 100%;">
+          <img [src]=product.image_url alt="product" class="p-store-list-img" (load)="loaded = true"
+          [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded" *ngIf="product.image_url" width="100%" height="100%" />
+          <ion-card-header>
+            <ion-card-title style="text-align: center; font-size: 18px;">New Collection</ion-card-title>
+            <ion-text class="p-store-list-name" text-wrap>
+              <h5 class="p-store-list-name" >
+                {{ (product.name.length>38)? (product.name | slice:0:38)+'..':(product.name)}}</h5>
+            </ion-text>
+  
+            <ion-row class="price-div">
+              <ion-col size="6" size-sm>
+                <ion-text class="p-store-list-price">
+                  <p style="margin-top: 10px; color:#19271f">Price</p>
+                  <h6 style="margin-top: 0px; color:#19271f" class="p-store-list-price">{{product.price}} EUR</h6>
+                </ion-text>
+              </ion-col>
+              <ion-col align-self-center class="ion-text-right" style="padding-right: 35px;" size="6" size-sm>
+  
+                <button class="selectbtn" style="background: transparent" [ngClass]="selectbtnGreen" (click)="addToCart(product)">
+                  <ion-icon style=" color:rgb(38, 95, 109);" name="cart"></ion-icon>
+                </button>
+              </ion-col>
+  
+  
+            </ion-row>
+          </ion-card-header>
+        </ion-card>
+  
+      </ion-slide>
+
+    </ion-slides>
+
+    <div style="height: 50px; background: #2e3943; text-align: center; color: white; font-weight: 800; padding-top: 15px;">
+      Groom Store
+    </div>
+  </ion-grid>
+</ion-content>
+

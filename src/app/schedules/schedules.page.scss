@@ -1,0 +1,44 @@
+.p-schedule-list-label {
+    color: #545454;
+    font-size: 12px;
+}
+
+.p-schedule-list-status {
+    margin: 8px auto;
+    display: block;
+}
+.p-schedule-list-item{
+    --background: #ffffff;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.contentbg{
+
+    --ion-background-color:#f5f7fb;
+}
+.basicCard{
+    background: white;
+    padding-top: 0;
+    padding-bottom: 9px;
+    border-top: 1px solid #f5f7fb;
+    .addnew{
+      text-align: center;
+      // background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
+      // height: 76px;
+      border-radius: 5px;
+      // background: #a5b3ae;
+      box-shadow: none;
+      margin: 0px;
+      ion-card-header{
+        padding: 0px;
+      }
+      ion-card-subtitle{
+          color: #a5b3ae;
+      }
+      ion-card-title{
+        color: #a5b3ae;
+        font-size: 27px;
+      }
+  }
+}

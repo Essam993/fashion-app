@@ -1,0 +1,46 @@
+*{
+    font-family: 'Playfair Display', serif;
+    font-family: 'Baloo 2', cursive;
+}
+ 
+    ion-toolbar{
+    --ion-background-color: #19271f;
+}
+
+.badgeard{
+    margin-right: 15px;
+    ion-icon{
+        font-size: 1.5em;
+        color: #25292b;
+    }
+    
+}
+
+ion-content{
+    --ion-background-color: rgb(250, 239, 239);
+}
+
+ion-toolbar {
+    --background: auto;
+    color: white;
+  }
+
+  #toolbar {
+    --ion-background-color: auto;
+  }
+
+
+  ion-card-subtitle{
+      color: #E64D5F;
+      font-weight: bolder;
+  }
+
+
+  ion-card-title{
+      color:  #2e3943;
+  }
+
+
+  ion-card-content{
+      color:  #2e3943;
+  }
